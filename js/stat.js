@@ -56,11 +56,9 @@ window.renderStatistics = function (ctx, players, times) {
     renderText(ctx, Math.round(times[i]), positionX, barPositionY - GAP);
     renderText(ctx, players[i], positionX, NAME_Y);
 
-    if (players[i] === 'Вы') {
-      ctx.fillStyle = 'rgba(255, 0, 0, 1)';
-    } else {
-      ctx.fillStyle = 'rgb(0, 0, ' + getRandomInt(1, 256) + ')';
-    }
+    ctx.fillStyle = (players[i] !== 'Вы') ?
+      'rgb(0, 0, ' + getRandomInt(1, 256) + ')' : 'rgba(255, 0, 0, 1)';
+
     renderRect(ctx, positionX, barPositionY, BAR_WIDTH, barHeight);
   }
 };
