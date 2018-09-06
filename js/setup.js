@@ -1,12 +1,10 @@
 'use strict';
 
 var WIZARDS_AMOUNT = 4;
-
-var wizardName = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон'];
-var wizardSurname = ['да Марья','Верон','Мирабелла','Вальц','Онопко','Топольницкая','Нионго','Ирвинг'];
-
-var coatColor = ['rgb(101, 137, 164)','rgb(241, 43, 107)','rgb(146, 100, 161)','rgb(56, 159, 117)','rgb(215, 210, 55)','rgb(0, 0, 0)'];
-var eyesColor = ['red','black','green','yellow','purle','blue'];
+var WIZARD_NAME = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон'];
+var WIZARD_SURNAME = ['да Марья','Верон','Мирабелла','Вальц','Онопко','Топольницкая','Нионго','Ирвинг'];
+var COAT_COLOR = ['rgb(101, 137, 164)','rgb(241, 43, 107)','rgb(146, 100, 161)','rgb(56, 159, 117)','rgb(215, 210, 55)','rgb(0, 0, 0)'];
+var EYES_COLOR = ['red','black','green','yellow','purle','blue'];
 
 var setupBlock = document.querySelector('.setup');
 setupBlock.classList.remove('hidden');
@@ -32,9 +30,9 @@ var getColor = function(color) {
 var getWizard = function() {
   var wizard = [];
   return wizard = {
-    name: getWizardName(wizardName, wizardSurname),
-    coatColor: getColor(coatColor),
-    eyesColor: getColor(eyesColor)
+    name: getWizardName(WIZARD_NAME, WIZARD_SURNAME),
+    coatColor: getColor(COAT_COLOR),
+    eyesColor: getColor(EYES_COLOR)
   };
 };
 
