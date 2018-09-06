@@ -1,5 +1,7 @@
 'use strict';
 
+var WIZARDS_AMOUNT = 4;
+
 var wizardName = ['Иван','Хуан Себастьян','Мария','Кристоф','Виктор','Юлия','Люпита','Вашингтон'];
 var wizardSurname = ['да Марья','Верон','Мирабелла','Вальц','Онопко','Топольницкая','Нионго','Ирвинг'];
 
@@ -45,7 +47,7 @@ var renderWizard = function (wizard) {
 }
 
 var fragment = document.createDocumentFragment(); // создаем корзину, которая соберем всех новых магов
-for (var i = 0; i < 4; i++) {
+for (var i = 0; i < WIZARDS_AMOUNT; i++) {
   fragment.appendChild(renderWizard(getWizard())); //в корзину добавляем магов по одному
 }
 similarListElement.appendChild(fragment); // вставляем разом всех магов из корзины
