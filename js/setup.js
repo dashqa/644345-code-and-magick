@@ -59,8 +59,10 @@ var renderWizard = function (wizard) {
 };
 
 var fragment = document.createDocumentFragment(); // создаем корзину, которая соберем всех новых магов
-for (var i = 0; i < createWizards(WIZARDS_AMOUNT).length; i++) {
-  fragment.appendChild(renderWizard(createWizards(WIZARDS_AMOUNT)[i])); // в корзину добавляем магов по одному
+var wizardsArray = createWizards(WIZARDS_AMOUNT); // создаем массив с магами
+
+for (var i = 0; i < wizardsArray.length; i++) {
+  fragment.appendChild(renderWizard(wizardsArray[i])); // в корзину добавляем магов по одному
 }
 similarListElement.appendChild(fragment); // вставляем разом всех магов из корзины
 
