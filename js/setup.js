@@ -78,7 +78,7 @@ var setupCloseElem = setupBlock.querySelector('.setup-close');
 
 
 var userNameInput = setupBlock.querySelector('.setup-user-name');
-userNameInput.addEventListener('invalid', function (evt) {
+userNameInput.addEventListener('invalid', function () {
   if (userNameInput.validity.tooShort) {
     userNameInput.setCustomValidity('Имя должно состоять минимум из 2-х символов');
   } else if (userNameInput.validity.tooLong) {
@@ -90,39 +90,39 @@ userNameInput.addEventListener('invalid', function (evt) {
   }
 });
 
-setupOpenElem.addEventListener('click', function() { // при нажатии на элемент выполняется функция openPopup
+setupOpenElem.addEventListener('click', function () { // при нажатии на элемент выполняется функция openPopup
   openPopup();
 });
 
-setupOpenElem.addEventListener('keydown', function(evt) { // при нажатии на кнопку enter выполняется функция OpenPopup
+setupOpenElem.addEventListener('keydown', function (evt) { // при нажатии на кнопку enter выполняется функция OpenPopup
   if (evt.keyCode === ENTER_KEYCODE) {
     openPopup();
   }
 });
 
-setupCloseElem.addEventListener('click', function() { // при нажатии на элемент выполняется функция closePopup
+setupCloseElem.addEventListener('click', function () { // при нажатии на элемент выполняется функция closePopup
   closePopup();
 });
 
-setupCloseElem.addEventListener('keydown', function(evt) { // при нажатии на кнопку enter выполняется функция closePopup
+setupCloseElem.addEventListener('keydown', function (evt) { // при нажатии на кнопку enter выполняется функция closePopup
   if (evt.keyCode === ENTER_KEYCODE) {
     closePopup();
   }
 });
 
 
-var openPopup = function() { // обработчик открытия окна
-  setupBlock.classList.remove('hidden');  // удаляем класс скрытия
+var openPopup = function () { // обработчик открытия окна
+  setupBlock.classList.remove('hidden'); // удаляем класс скрытия
   document.addEventListener('keydown', onPopupEscPress); // при нажатии на кнопку выполняется функция onPopupEscPress
 };
 
-var onPopupEscPress = function(evt) {
+var onPopupEscPress = function (evt) {
   if (evt.keyCode === ESC_KEYCODE) { // если кнопка эскейпа, то выполняется функция closePopup
     closePopup();
   }
 };
 
-var closePopup = function() { // обработчик закрытия окна
+var closePopup = function () { // обработчик закрытия окна
   setupBlock.classList.add('hidden'); // добавляем класс скрытия
   document.removeEventListener('keydown', onPopupEscPress); // при нажатии на кнопку удаляется обработчик onPopupEscPress
 };
@@ -134,11 +134,13 @@ var fireballInput = document.querySelector('input[name="fireball-color"]');
 
 var changeColor = function (elem, colorsArray, inputElem) {
   var randomCol = getColor(colorsArray);
-  return (elem.tagName === ('use') ? elem.style.fill = randomCol : elem.style.backgroundColor = randomCol), inputElem.setAttribute('value', randomCol);
+  var assignmentColor = (elem.tagName === ('use') ? elem.style.fill = randomCol : elem.style.backgroundColor = randomCol);
+  var settingAttr = inputElem.setAttribute('value', randomCol);
+  return [assignmentColor, settingAttr];
 };
 
 var wizardCoatElem = document.querySelector('.wizard-coat');
-wizardCoatElem.addEventListener('click', function() {
+wizardCoatElem.addEventListener('click', function () {
   changeColor(wizardCoatElem, COAT_COLORS, coatInput);
 
 });
@@ -148,17 +150,17 @@ wizardEyesElem.addEventListener('click', function () {
   changeColor(wizardEyesElem, EYES_COLORS, eyesInput);
 });
 
-var wizardFireballElem = document.querySelector('.setup-fireball-wrap')
+var wizardFireballElem = document.querySelector('.setup-fireball-wrap');
 wizardFireballElem.addEventListener('click', function () {
   changeColor(wizardFireballElem, FIREBALL_COLORS, fireballInput);
 });
 
-var wizardHeadElem = document.querySelector('.wizard-head')
+var wizardHeadElem = document.querySelector('.wizard-head');
 wizardHeadElem.addEventListener('click', function () {
   changeColor(wizardHeadElem, HEAD_COLORS);
 });
 
-var wizardHandsElem = document.querySelector('.wizard-hands')
+var wizardHandsElem = document.querySelector('.wizard-hands');
 wizardHandsElem.addEventListener('click', function () {
   changeColor(wizardHandsElem, HANDS_COLORS);
 });
