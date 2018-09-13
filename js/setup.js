@@ -134,17 +134,20 @@ var fireballInput = document.querySelector('input[name="fireball-color"]');
 
 var changeColor = function (elem, colorsArray, inputElem) {
   var randomCol = getColor(colorsArray);
-  var assignmentColor = (elem.tagName === ('use') ? elem.style.fill = randomCol : elem.style.backgroundColor = randomCol);
+  elem.tagName === 'use' ? elem.style.fill = randomCol : elem.style.backgroundColor = randomCol;
+  // if (elem.tagName === 'use') {
+  //   elem.style.fill = randomCol;
+  // } else {
+  //   elem.style.backgroundColor = randomCol;
+  // }
   if (inputElem) {
-    var settingAttr = inputElem.setAttribute('value', randomCol);
+    inputElem.setAttribute('value', randomCol);
   }
-  return [assignmentColor, settingAttr];
 };
 
 var wizardCoatElem = document.querySelector('.wizard-coat');
 wizardCoatElem.addEventListener('click', function () {
   changeColor(wizardCoatElem, COAT_COLORS, coatInput);
-
 });
 
 var wizardEyesElem = document.querySelector('.wizard-eyes');
