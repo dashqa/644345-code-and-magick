@@ -135,7 +135,9 @@ var fireballInput = document.querySelector('input[name="fireball-color"]');
 var changeColor = function (elem, colorsArray, inputElem) {
   var randomCol = getColor(colorsArray);
   var assignmentColor = (elem.tagName === ('use') ? elem.style.fill = randomCol : elem.style.backgroundColor = randomCol);
-  var settingAttr = inputElem.setAttribute('value', randomCol);
+  if (inputElem) {
+    var settingAttr = inputElem.setAttribute('value', randomCol);
+  }
   return [assignmentColor, settingAttr];
 };
 
@@ -164,5 +166,3 @@ var wizardHandsElem = document.querySelector('.wizard-hands');
 wizardHandsElem.addEventListener('click', function () {
   changeColor(wizardHandsElem, HANDS_COLORS);
 });
-
-
