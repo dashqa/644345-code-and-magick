@@ -134,14 +134,7 @@ var fireballInput = document.querySelector('input[name="fireball-color"]');
 
 var changeColor = function (elem, colorsArray, inputElem) {
   var randomCol = getColor(colorsArray);
-  /*  elem.tagName === 'use' ? elem.style.fill = randomCol : elem.style.backgroundColor = randomCol;
-   как в данном случае можно использовать тернарник? а то линтер жалуется на такое написание, но ведь код идентичен конструкции if-else? */
-
-  if (elem.tagName === 'use') {
-    elem.style.fill = randomCol;
-  } else {
-    elem.style.backgroundColor = randomCol;
-  }
+  elem.style[elem.tagName === 'use' ? 'fill' : 'backgroundColor'] = randomCol;
   if (inputElem) {
     inputElem.setAttribute('value', randomCol);
   }
